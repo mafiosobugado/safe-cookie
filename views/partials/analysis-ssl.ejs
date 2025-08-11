@@ -1,0 +1,70 @@
+<div class="category-card">
+    <div class="category-header">
+        <h2 class="category-title">
+            <span class="category-icon">🔒</span>
+            SSL/TLS
+        </h2>
+        <div class="category-score">
+            <span class="score-grade grade-<%= analysis.ssl?.grade?.toLowerCase() || 'f' %>">
+                <%= analysis.ssl?.grade || 'F' %>
+            </span>
+            <span class="score-number"><%= analysis.ssl?.score || 0 %>/100</span>
+        </div>
+    </div>
+    
+    <div class="category-content">
+        <% if (analysis.ssl?.error) { %>
+            <div class="error-message">
+                <span class="error-icon">❌</span>
+                <%= analysis.ssl.message %>
+            </div>
+        <% } else if (analysis.ssl?.isSecure) { %>
+            <div class="ssl-info">
+                <div class="ssl-detail">
+                    <strong>Certificado:</strong> Válido
+                </div>
+                <% if (analysis.ssl.protocol) { %>
+                    <div class="ssl-detail">
+                        <strong>Protocolo:</strong> <%= analysis.ssl.protocol %>
+                    </div>
+                <% } %>
+                <% if (analysis.ssl.cipher) { %>
+                    <div class="ssl-detail">
+                        <strong>Cifra:</strong> <%= analysis.ssl.cipher %>
+                    </div>
+                <% } %>
+            </div>
+        <% } else { %>
+            <div class="warning-message">
+                <span class="warning-icon">⚠️</span>
+                <%= analysis.ssl?.reason || 'Site não usa HTTPS' %>
+            </div>
+        <% } %>
+        
+        <% if (analysis.ssl?.vulnerabilities && analysis.ssl.vulnerabilities.length > 0) { %>
+            <div class="vulnerabilities-list">
+                <h4>Problemas Encontrados:</h4>
+                <% analysis.ssl.vulnerabilities.forEach(function(vuln) { %>
+                    <div class="vulnerability-item severity-<%= vuln.severity %>">
+                        <div class="vulnerability-message"><%= vuln.message %></div>
+                        <% if (vuln.impact) { %>
+                            <div class="vulnerability-impact"><%= vuln.impact %></div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+        
+        <% if (analysis.ssl?.recommendations && analysis.ssl.recommendations.length > 0) { %>
+            <div class="recommendations-list">
+                <h4>Recomendações:</h4>
+                <% analysis.ssl.recommendations.forEach(function(rec) { %>
+                    <div class="recommendation-item">
+                        <span class="recommendation-icon">💡</span>
+                        <span class="recommendation-text"><%= rec %></span>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>

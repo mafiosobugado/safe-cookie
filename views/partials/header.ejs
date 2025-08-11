@@ -1,0 +1,47 @@
+<header class="header" role="banner">
+    <div class="header-container">
+        <div class="header-brand">
+            <a href="/" class="header-logo">
+                <div class="brand-icon">🍪</div>
+                <span class="brand-text">Safe Cookie</span>
+                <span class="brand-version">v2.0</span>
+            </a>
+        </div>
+        
+        <nav class="header-nav">
+            <ul class="header-nav-list">
+                <li class="header-nav-item">
+                    <a href="/" class="header-nav-link <%= currentPage === 'home' ? 'active' : '' %>">
+                        Início
+                    </a>
+                </li>
+                <li class="header-nav-item">
+                    <a href="/api/info" class="header-nav-link" target="_blank">
+                        API
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="header-actions">
+            <button class="btn-secondary" onclick="window.open('https://github.com/safe-cookie/safe-cookie', '_blank')">
+                GitHub
+            </button>
+        </div>
+        
+        <!-- Mobile menu toggle -->
+        <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="mobile-menu hidden">
+        <ul class="mobile-menu-list">
+            <li><a href="/" class="mobile-menu-link">Início</a></li>
+            <li><a href="/api/info" class="mobile-menu-link" target="_blank">API</a></li>
+        </ul>
+    </div>
+</header>

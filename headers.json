@@ -1,0 +1,13 @@
+{
+  "Content-Security-Policy": "Ajuda a prevenir ataques como Cross Site Scripting (XSS), especificando quais fontes de conteúdo são consideradas seguras.",
+  "Strict-Transport-Security": "Garante que os navegadores se comuniquem com o servidor apenas via HTTPS, protegendo contra ataques de downgrade.",
+  "X-Frame-Options": "Impede que o site seja carregado dentro de um iframe, protegendo contra ataques de clickjacking.",
+  "X-Content-Type-Options": "Evita que o navegador tente adivinhar o tipo de conteúdo (MIME sniffing), o que pode prevenir execução de código malicioso.",
+  "Referrer-Policy": "Controla quais informações do referenciador (referer) são enviadas quando um link é clicado.",
+  "Permissions-Policy": "Permite controlar o acesso a funcionalidades do navegador, como câmera, microfone, localização etc.",
+  "X-XSS-Protection": "Ativa a proteção contra ataques de Cross Site Scripting (XSS) nos navegadores antigos.",
+  "Expect-CT": "Permite monitorar e aplicar a política de Certificação Transparente (Certificate Transparency).",
+  "Cache-Control": "Controla como as respostas são armazenadas em cache. Pode evitar que dados sensíveis fiquem salvos no navegador.",
+  "Pragma": "Usado junto com Cache-Control para garantir que dados sensíveis não sejam armazenados em cache.",
+  "Feature-Policy": "(Obsoleto) Controlava o acesso a APIs e funcionalidades como geolocalização, câmera, microfone etc. Substituído por Permissions-Policy."
+}

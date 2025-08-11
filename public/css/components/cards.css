@@ -1,0 +1,382 @@
+/**
+ * Cards - Safe Cookie
+ * Componentes de cartão modulares e flexíveis
+ */
+
+/* === CARD BASE === */
+.card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: var(--transition-all);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* === CARD HEADER === */
+.card-header {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--color-gray-200);
+  background-color: var(--color-gray-50);
+}
+
+.card-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-900);
+}
+
+.card-subtitle {
+  margin: var(--spacing-1) 0 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+}
+
+/* === CARD BODY === */
+.card-body {
+  padding: var(--card-padding);
+}
+
+.card-text {
+  margin: 0 0 var(--spacing-4) 0;
+  color: var(--color-gray-700);
+  line-height: var(--line-height-normal);
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+/* === CARD FOOTER === */
+.card-footer {
+  padding: var(--spacing-4) var(--spacing-6);
+  border-top: 1px solid var(--color-gray-200);
+  background-color: var(--color-gray-50);
+}
+
+/* === CARD VARIANTS === */
+.card--bordered {
+  border: 2px solid var(--color-gray-200);
+}
+
+.card--shadow-none {
+  box-shadow: none;
+}
+
+.card--shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.card--rounded-none {
+  border-radius: 0;
+}
+
+.card--rounded-xl {
+  border-radius: var(--border-radius-xl);
+}
+
+/* === STATUS CARDS === */
+.card--primary {
+  border-color: var(--color-primary);
+}
+
+.card--primary .card-header {
+  background-color: var(--color-primary-50);
+  border-bottom-color: var(--color-primary-100);
+}
+
+.card--success {
+  border-color: var(--color-success);
+}
+
+.card--success .card-header {
+  background-color: var(--color-success-bg);
+  border-bottom-color: var(--color-success);
+}
+
+.card--warning {
+  border-color: var(--color-warning);
+}
+
+.card--warning .card-header {
+  background-color: var(--color-warning-bg);
+  border-bottom-color: var(--color-warning);
+}
+
+.card--error {
+  border-color: var(--color-error);
+}
+
+.card--error .card-header {
+  background-color: var(--color-error-bg);
+  border-bottom-color: var(--color-error);
+}
+
+/* === SECURITY RESULT CARDS === */
+.security-card {
+  position: relative;
+  overflow: visible;
+}
+
+.security-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color-gray-300);
+  border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+}
+
+.security-card--critical::before {
+  background-color: var(--color-security-critical);
+}
+
+.security-card--high::before {
+  background-color: var(--color-security-high);
+}
+
+.security-card--medium::before {
+  background-color: var(--color-security-medium);
+}
+
+.security-card--low::before {
+  background-color: var(--color-security-low);
+}
+
+.security-card--good::before {
+  background-color: var(--color-security-good);
+}
+
+/* === GRADE CARDS === */
+.grade-card {
+  text-align: center;
+  padding: var(--spacing-8);
+}
+
+.grade-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-4);
+}
+
+.grade-badge--a-plus {
+  background-color: var(--color-grade-a-plus);
+}
+
+.grade-badge--a {
+  background-color: var(--color-grade-a);
+}
+
+.grade-badge--b {
+  background-color: var(--color-grade-b);
+}
+
+.grade-badge--c {
+  background-color: var(--color-grade-c);
+}
+
+.grade-badge--d {
+  background-color: var(--color-grade-d);
+}
+
+.grade-badge--f {
+  background-color: var(--color-grade-f);
+}
+
+/* === FEATURE CARDS === */
+.feature-card {
+  text-align: center;
+  padding: var(--spacing-8) var(--spacing-6);
+  border: none;
+  border-radius: var(--border-radius-xl);
+  background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gray-50) 100%);
+  transition: var(--transition-all);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.feature-icon {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto var(--spacing-4);
+  padding: var(--spacing-3);
+  background-color: var(--color-primary-100);
+  border-radius: var(--border-radius-lg);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-title {
+  margin-bottom: var(--spacing-3);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-900);
+}
+
+.feature-description {
+  color: var(--color-gray-600);
+  line-height: var(--line-height-relaxed);
+}
+
+/* === STAT CARDS === */
+.stat-card {
+  text-align: center;
+  padding: var(--spacing-6);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-white);
+  border: none;
+}
+
+.stat-number {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  margin-bottom: var(--spacing-2);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === ANALYSIS RESULT CARDS === */
+.analysis-result-card {
+  margin-bottom: var(--spacing-6);
+}
+
+.analysis-section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.analysis-section-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-primary);
+}
+
+.vulnerability-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.vulnerability-item {
+  display: flex;
+  align-items: start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  background-color: var(--color-gray-50);
+  border-radius: var(--border-radius-md);
+  border-left: 4px solid var(--color-gray-300);
+}
+
+.vulnerability-item--critical {
+  border-left-color: var(--color-security-critical);
+  background-color: rgba(220, 38, 38, 0.05);
+}
+
+.vulnerability-item--high {
+  border-left-color: var(--color-security-high);
+  background-color: rgba(234, 88, 12, 0.05);
+}
+
+.vulnerability-item--medium {
+  border-left-color: var(--color-security-medium);
+  background-color: rgba(217, 119, 6, 0.05);
+}
+
+.vulnerability-item--low {
+  border-left-color: var(--color-security-low);
+  background-color: rgba(101, 163, 13, 0.05);
+}
+
+.vulnerability-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.vulnerability-content {
+  flex: 1;
+}
+
+.vulnerability-title {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-1);
+}
+
+.vulnerability-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-600);
+  line-height: var(--line-height-normal);
+}
+
+/* === GRID DE CARDS === */
+.cards-grid {
+  display: grid;
+  gap: var(--spacing-6);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .cards-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .cards-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-width: 640px) {
+  .feature-card {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+  
+  .grade-badge {
+    width: 3rem;
+    height: 3rem;
+    font-size: var(--font-size-xl);
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-3xl);
+  }
+}

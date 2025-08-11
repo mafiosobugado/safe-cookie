@@ -1,0 +1,282 @@
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Análise Avançada de 
+                    <span class="highlight">Segurança Web</span>
+                </h1>
+                <p class="hero-description">
+                    Ferramenta completa para análise de cookies, certificados SSL, headers HTTP e detecção de vulnerabilidades em tempo real.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">🍪</span>
+                        <span>Análise de Cookies</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔒</span>
+                        <span>Certificados SSL</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🛡️</span>
+                        <span>Headers de Segurança</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔍</span>
+                        <span>Detecção de Vulnerabilidades</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-form">
+                <div class="analysis-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Analisar Website</h2>
+                        <p class="card-description">
+                            Digite a URL do site que deseja analisar
+                        </p>
+                    </div>
+                    
+                    <form id="url-analysis-form" class="analysis-form">
+                        <div class="form-group">
+                            <label for="url-input" class="form-label">URL do Website</label>
+                            <div class="input-group">
+                                <input 
+                                    type="url" 
+                                    id="url-input" 
+                                    name="url" 
+                                    class="form-input" 
+                                    placeholder="https://exemplo.com"
+                                    required
+                                    autocomplete="url"
+                                    aria-describedby="url-help"
+                                >
+                                <button type="submit" class="btn-primary" id="analyze-btn">
+                                    <span class="btn-text">Analisar</span>
+                                    <span class="btn-loading hidden">
+                                        <span class="spinner-small"></span>
+                                        Analisando...
+                                    </span>
+                                </button>
+                            </div>
+                            <div id="url-help" class="form-help">
+                                Exemplo: https://www.google.com
+                            </div>
+                            <div id="url-error" class="form-error hidden"></div>
+                        </div>
+                    </form>
+                    
+                    <!-- Quick Check -->
+                    <div class="quick-check">
+                        <p class="quick-check-text">Verificação rápida:</p>
+                        <div class="quick-check-buttons">
+                            <button class="btn-quick" onclick="quickAnalyze('https://www.google.com')">
+                                Google
+                            </button>
+                            <button class="btn-quick" onclick="quickAnalyze('https://github.com')">
+                                GitHub
+                            </button>
+                            <button class="btn-quick" onclick="quickAnalyze('https://www.facebook.com')">
+                                Facebook
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Análise Completa de Segurança</h2>
+            <p class="section-description">
+                Nossa ferramenta examina múltiplos aspectos da segurança web para fornecer uma avaliação abrangente
+            </p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-large">🍪</div>
+                <h3 class="feature-title">Análise de Cookies</h3>
+                <p class="feature-description">
+                    Verifica flags de segurança (Secure, HttpOnly, SameSite), duração, escopo e detecta cookies sensíveis
+                </p>
+                <ul class="feature-list">
+                    <li>Flags de segurança</li>
+                    <li>Detecção de cookies sensíveis</li>
+                    <li>Análise de escopo e duração</li>
+                    <li>Conformidade com LGPD</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon-large">🔒</div>
+                <h3 class="feature-title">Certificados SSL/TLS</h3>
+                <p class="feature-description">
+                    Análise completa de certificados, versões do protocolo, algoritmos de criptografia e validação de cadeia
+                </p>
+                <ul class="feature-list">
+                    <li>Validação de certificados</li>
+                    <li>Análise de algoritmos</li>
+                    <li>Verificação de expiração</li>
+                    <li>Cadeia de confiança</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon-large">🛡️</div>
+                <h3 class="feature-title">Headers de Segurança</h3>
+                <p class="feature-description">
+                    Verifica presença e configuração de headers essenciais como CSP, HSTS, X-Frame-Options e outros
+                </p>
+                <ul class="feature-list">
+                    <li>Content Security Policy</li>
+                    <li>HTTP Strict Transport Security</li>
+                    <li>Proteção contra Clickjacking</li>
+                    <li>Controle de Cache</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon-large">🔍</div>
+                <h3 class="feature-title">Detecção de Vulnerabilidades</h3>
+                <p class="feature-description">
+                    Identifica vulnerabilidades conhecidas, configurações inseguras e fornece recomendações específicas
+                </p>
+                <ul class="feature-list">
+                    <li>Scan de vulnerabilidades</li>
+                    <li>Análise de configurações</li>
+                    <li>Recomendações personalizadas</li>
+                    <li>Sistema de pontuação</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-target="0" data-count="0">0</div>
+                <div class="stat-label">Análises Realizadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="0" data-count="0">0</div>
+                <div class="stat-label">Vulnerabilidades Detectadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="0" data-count="0">0</div>
+                <div class="stat-label">Sites Seguros</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="0" data-count="0">0</div>
+                <div class="stat-label">Usuários Ativos</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Section -->
+<section class="demo-section">
+    <div class="container">
+        <div class="demo-content">
+            <div class="demo-text">
+                <h2 class="demo-title">Como Funciona</h2>
+                <p class="demo-description">
+                    Nossa ferramenta realiza uma análise abrangente em poucos segundos, fornecendo relatórios detalhados e acionáveis.
+                </p>
+                
+                <div class="demo-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Digite a URL</h3>
+                            <p>Insira a URL do site que deseja analisar</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Análise Automática</h3>
+                            <p>Nossa ferramenta examina todos os aspectos de segurança</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Relatório Detalhado</h3>
+                            <p>Receba um relatório completo com recomendações</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-visual">
+                <div class="demo-browser">
+                    <div class="browser-header">
+                        <div class="browser-controls">
+                            <span class="control control-red"></span>
+                            <span class="control control-yellow"></span>
+                            <span class="control control-green"></span>
+                        </div>
+                        <div class="browser-url">safe-cookie.com</div>
+                    </div>
+                    <div class="browser-content">
+                        <div class="demo-result">
+                            <div class="result-header">
+                                <span class="result-icon">🔒</span>
+                                <span class="result-text">Análise Completa</span>
+                            </div>
+                            <div class="result-score">
+                                <div class="score-circle">
+                                    <span class="score-value">A+</span>
+                                </div>
+                                <div class="score-details">
+                                    <div class="score-item">
+                                        <span class="score-label">SSL:</span>
+                                        <span class="score-grade grade-a">A</span>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-label">Headers:</span>
+                                        <span class="score-grade grade-a">A+</span>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-label">Cookies:</span>
+                                        <span class="score-grade grade-b">B</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Pronto para Analisar seu Site?</h2>
+            <p class="cta-description">
+                Descubra vulnerabilidades e melhore a segurança do seu website em poucos minutos
+            </p>
+            <div class="cta-buttons">
+                <button class="btn-primary btn-large" onclick="document.getElementById('url-input').focus()">
+                    Começar Análise
+                </button>
+                <button class="btn-secondary btn-large" onclick="window.open('/api/info', '_blank')">
+                    Ver Documentação da API
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

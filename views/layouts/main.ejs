@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title><%= pageTitle || 'Safe Cookie - Advanced Web Security Analysis' %></title>
+    <meta name="description" content="<%= pageDescription || 'Comprehensive security analysis for cookies, SSL, headers and vulnerabilities' %>">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="<%= currentPage || '' %>">
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <%- body %>
+    </main>
+    
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+    
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Analisando segurança...</p>
+        </div>
+    </div>
+    
+    <!-- Global Functions -->
+    <script src="/js/globals/global-functions.js"></script>
+    
+    <!-- Core JavaScript -->
+    <script src="/js/core/core-loader.js"></script>
+    
+    <!-- Page specific JavaScript -->
+    <% if (typeof additionalJS !== 'undefined' && additionalJS) { %>
+        <% additionalJS.forEach(function(script) { %>
+            <script src="<%= script %>"></script>
+        <% }); %>
+    <% } %>
+    
+    <!-- Initialize App -->
+    <script>
+        // Wait for core modules to load, then let page-specific scripts handle initialization
+        document.addEventListener('safecookie:ready', function(event) {
+            console.log('[SafeCookie] Core modules ready, page scripts will handle initialization');
+            
+            // Initialize page specific functionality
+            if (typeof initPage === 'function') {
+                initPage();
+            }
+        });
+        
+        // Fallback if core loading fails
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (!window.apiClient) {
+                    console.warn('[SafeCookie] Core modules failed to load');
+                    
+                    if (typeof initPage === 'function') {
+                        initPage();
+                    }
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Safe Cookie 🍪🔒</title>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <video autoplay muted loop playsinline id="bg-video">
+  <source src="fundo.mp4" type="video/mp4" />
+</video>
+  <div class="container">
+  <div class="container">
+    <h1>
+      <center>
+      <img src="favicon.png" alt="Safe Cookie Logo" class="logo-titulo" /> <br>
+      Safe Cookie
+    </center>
+    </h1>
+    <form action="/analisar" method="POST">
+      <input
+        type="text"
+        name="url"
+        placeholder="Digite a URL (ex: https://site.com)"
+        required
+        value="<%= url || '' %>"
+      />
+      <button type="submit">Analisar</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error">Erro: <%= error %></p>
+    <% } %>
+
+    <% if (!cookies && !error) { %>
+      <p>Digite uma URL acima para começar a análise de cookies.</p>
+    <% } %>
+
+    <% if (typeof score === 'number' && cookies) { %>
+      <div class="pontuacao">
+        <span>🔎 Nivel de Segurança Do Site: <%= score %>/10</span>
+        <progress 
+          value="<%= score %>" 
+          max="10" 
+          class="barra-progresso <%= score < 4 ? 'perigo' : score < 7 ? 'medio' : 'seguro' %>">
+        </progress>
+      </div>
+    <% } %>
+
+    <h2>🚨 Vulnerabilidades encontradas:</h2>
+
+    <% if (vulnerabilidades.length === 0) { %>
+      <p class="seguro">✅ Nenhuma vulnerabilidade detectada no HTML ou cookies.</p>
+    <% } else { %>
+      <% vulnerabilidades.forEach((vul) => { %>
+        <div class="vulnerabilidade">
+          <div class="vul-title">
+            ⚠️ Termo técnico: <strong><%= vul.technical %></strong>
+            <i class="ajuda-tooltip" title="Este é um termo técnico que descreve o tipo de falha.">❓</i>
+          </div>
+          <div>
+            📋 <strong>Elemento afetado:</strong> 
+            <pre class="codigo-html"><%= vul.element || 'Não identificado' %></pre>
+          </div>
+          <div class="vul-explanation">💡 Explicação simples: <%= vul.explanation || 'Não disponível' %></div>
+          <div class="vul-explanation">🛠️ Código vulnerável:</div>
+          <pre class="codigo-html"><%= vul.badCode || 'Não disponível' %></pre>
+          <div class="vul-explanation">🔧 Dica para o usuário: <%= vul.userHelp || 'Não disponível' %></div>
+        </div>
+      <% }); %>
+    <% } %>
+
+    <h2>🍪 Cookies recebidos do site <%= url %>:</h2>
+
+        <% if (cookies) { %>
+      <% cookies.forEach(cookie => { %>
+        <div class="cookie-box">
+          <strong>Nome:</strong> <%= cookie.name %><br />
+          <strong>HttpOnly:</strong> <%= cookie.httpOnly ? "✅ Sim" : "❌ Não" %><br />
+          <strong>Secure:</strong> <%= cookie.secure ? "✅ Sim" : "❌ Não" %><br />
+          <strong>SameSite:</strong> <%= cookie.sameSite || "❌ Não definido" %><br />
+          <strong>Função (explicação):</strong> <%= cookie.explicacao %><br />
+        </div>
+      <% }) %>
+    <% } %>
+
+    <% if (typeof score === 'number' && cookies && url) { %>
+      <div style="margin-top: 20px;">
+        <button onclick="baixarRelatorio()" class="botao-download">📄 Baixar Relatório</button>
+      </div>
+
+      <script>
+        async function baixarRelatorio() {
+          const analise = {
+            url: "<%= url %>",
+            score: <%= score %>,
+            vulnerabilidades: <%- JSON.stringify(vulnerabilidades) %>,
+            cookies: <%- JSON.stringify(cookies) %>
+          };
+
+          try {
+            const response = await fetch('/generate_relatorio', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(analise)
+            });
+
+            if (!response.ok) {
+              throw new Error('Erro ao gerar relatório');
+            }
+
+            const blob = await response.blob();
+            const urlBlob = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = urlBlob;
+            a.download = 'relatorio.txt';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(urlBlob);
+          } catch (error) {
+            alert('Erro ao baixar relatório: ' + error.message);
+          }
+        }
+      </script>
+    <% } %>
+  </div> <!-- container -->
+</body>
+</html>

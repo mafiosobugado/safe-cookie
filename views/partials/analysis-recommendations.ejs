@@ -1,0 +1,13 @@
+<% if (analysis.recommendations && analysis.recommendations.length > 0) { %>
+    <div class="recommendations-section">
+        <h2 class="section-title">Recomendações Gerais</h2>
+        <div class="recommendations-list">
+            <% analysis.recommendations.forEach(function(recommendation) { %>
+                <div class="recommendation-item">
+                    <span class="recommendation-icon">💡</span>
+                    <span class="recommendation-text"><%= recommendation %></span>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+<% } %>

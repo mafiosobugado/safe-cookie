@@ -1,0 +1,41 @@
+<% if (error) { %>
+    <!-- Error State -->
+    <section class="error-section">
+        <div class="container">
+            <div class="error-card">
+                <div class="error-icon">⚠️</div>
+                <h1 class="error-title">Erro na Análise</h1>
+                <p class="error-message"><%= error.message %></p>
+                
+                <% if (error.technical) { %>
+                    <details class="error-details">
+                        <summary>Detalhes Técnicos</summary>
+                        <pre class="error-technical"><%= error.technical %></pre>
+                    </details>
+                <% } %>
+                
+                <% if (error.suggestions && error.suggestions.length > 0) { %>
+                    <div class="error-suggestions">
+                        <h3>Sugestões:</h3>
+                        <ul>
+                            <% error.suggestions.forEach(function(suggestion) { %>
+                                <li><%= suggestion %></li>
+                            <% }); %>
+                        </ul>
+                    </div>
+                <% } %>
+                
+                <div class="error-actions">
+                    <button class="btn-primary" onclick="window.history.back()">Voltar</button>
+                    <a href="/" class="btn-secondary">Nova Análise</a>
+                </div>
+            </div>
+        </div>
+    </section>
+<% } else if (!analysis) { %>
+    <!-- Initial State -->
+    <%- include('analysis-form') %>
+<% } else { %>
+    <!-- Results State -->
+    <%- include('analysis-results', { analysis: analysis }) %>
+<% } %>

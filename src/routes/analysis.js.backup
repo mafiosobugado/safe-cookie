@@ -1,0 +1,34 @@
+const express = require('express');
+const router = express.Router();
+const analysisController = require('../controllers/analysisController');
+
+// Renderizar página de análise sem ID
+router.get('/', (req, res) => {
+  res.render('pages/analysis', {
+    pageTitle: 'Analysis Results | Safe Cookie',
+    pageDescription: 'Security analysis results for your website',
+    currentPage: 'analysis',
+    additionalJS: ['/js/pages/analysis.js'],
+    title: 'Análise de Segurança',
+    analysis: null,
+    error: null
+  });
+});
+
+// Renderizar página de análise específica
+router.get('/:analysisId', (req, res) => {
+  const { analysisId } = req.params;
+  
+  res.render('pages/analysis', {
+    pageTitle: 'Analysis Results | Safe Cookie',
+    pageDescription: 'Security analysis results for your website',
+    currentPage: 'analysis',
+    additionalJS: ['/js/pages/analysis.js'],
+    title: 'Análise de Segurança',
+    analysis: null,
+    error: null,
+    analysisId: analysisId
+  });
+});
+
+module.exports = router;

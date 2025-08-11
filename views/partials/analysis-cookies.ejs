@@ -1,0 +1,99 @@
+<div class="category-card">
+    <div class="category-header">
+        <h2 class="category-title">
+            <span class="category-icon">🍪</span>
+            Cookies
+        </h2>
+        <div class="category-score">
+            <span class="score-grade grade-<%= analysis.cookies?.grade?.toLowerCase() || 'f' %>">
+                <%= analysis.cookies?.grade || 'F' %>
+            </span>
+            <span class="score-number"><%= analysis.cookies?.score || 0 %>/100</span>
+        </div>
+    </div>
+    
+    <div class="category-content">
+        <% if (analysis.cookies?.error) { %>
+            <div class="error-message">
+                <span class="error-icon">❌</span>
+                <%= analysis.cookies.message %>
+            </div>
+        <% } else if (!analysis.cookies?.hasCookies) { %>
+            <div class="info-message">
+                <span class="info-icon">ℹ️</span>
+                <%= analysis.cookies?.message || 'Nenhum cookie encontrado' %>
+            </div>
+        <% } else { %>
+            <div class="cookies-summary">
+                <div class="summary-stats">
+                    <div class="summary-item">
+                        <span class="summary-value"><%= analysis.cookies.count %></span>
+                        <span class="summary-label">Total</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-value"><%= analysis.cookies.summary?.secure || 0 %></span>
+                        <span class="summary-label">Secure</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-value"><%= analysis.cookies.summary?.httpOnly || 0 %></span>
+                        <span class="summary-label">HttpOnly</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-value"><%= analysis.cookies.summary?.sameSite || 0 %></span>
+                        <span class="summary-label">SameSite</span>
+                    </div>
+                </div>
+            </div>
+            
+            <% if (analysis.cookies.cookies && analysis.cookies.cookies.length > 0) { %>
+                <div class="cookies-list">
+                    <h4>Cookies Encontrados:</h4>
+                    <% analysis.cookies.cookies.forEach(function(cookie) { %>
+                        <div class="cookie-item">
+                            <div class="cookie-header">
+                                <span class="cookie-name"><%= cookie.name %></span>
+                                <span class="cookie-security security-<%= cookie.securityLevel %>">
+                                    <%= cookie.securityLevel %>
+                                </span>
+                            </div>
+                            <div class="cookie-flags">
+                                <span class="flag <%= cookie.secure ? 'flag-present' : 'flag-missing' %>">Secure</span>
+                                <span class="flag <%= cookie.httpOnly ? 'flag-present' : 'flag-missing' %>">HttpOnly</span>
+                                <span class="flag <%= cookie.sameSite ? 'flag-present' : 'flag-missing' %>">SameSite</span>
+                            </div>
+                            <% if (cookie.explanation) { %>
+                                <div class="cookie-explanation"><%= cookie.explanation %></div>
+                            <% } %>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        <% } %>
+        
+        <% if (analysis.cookies?.vulnerabilities && analysis.cookies.vulnerabilities.length > 0) { %>
+            <div class="vulnerabilities-list">
+                <h4>Problemas Encontrados:</h4>
+                <% analysis.cookies.vulnerabilities.forEach(function(vuln) { %>
+                    <div class="vulnerability-item severity-<%= vuln.severity %>">
+                        <div class="vulnerability-message"><%= vuln.message %></div>
+                        <% if (vuln.impact) { %>
+                            <div class="vulnerability-impact"><%= vuln.impact %></div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+        
+        <% if (analysis.cookies?.recommendations && analysis.cookies.recommendations.length > 0) { %>
+            <div class="recommendations-list">
+                <h4>Recomendações:</h4>
+                <% analysis.cookies.recommendations.forEach(function(rec) { %>
+                    <div class="recommendation-item">
+                        <span class="recommendation-icon">💡</span>
+                        <span class="recommendation-text"><%= rec %></span>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>

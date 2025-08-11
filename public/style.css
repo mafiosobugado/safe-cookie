@@ -1,0 +1,225 @@
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  
+}
+ 
+/* 🎥 Fundo animado com carrossel via div */
+.bg-carousel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  animation: bgfade 30s infinite;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background-image 1s ease-in-out;
+  background-image: url('https://blog.nvidia.com.br/wp-content/uploads/sites/12/2023/09/cybersecurity-abstract-image.png');
+}
+
+
+
+/* 🎨 Estilo base escuro */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #e0e0e0;
+}
+
+/* Conteúdo principal */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(0, 39, 48, 1);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+/* Título */
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #249da3;
+}
+
+/* Formulário */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+form input {
+  flex: 1;
+  padding: 12px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  min-width: 250px;
+}
+
+form input::placeholder {
+  color: #aaa;
+}
+
+form button {
+  padding: 12px 20px;
+  background: #0a66c2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+form button:hover {
+  background: #084d99;
+}
+
+/* Pontuação de segurança */
+.pontuacao {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.barra-seguranca {
+  width: 100%;
+  background: #333;
+  height: 25px;
+  border-radius: 8px;
+  margin-top: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.barra-seguranca .nivel {
+  height: 100%;
+  font-weight: bold;
+  text-align: center;
+  line-height: 25px;
+  transition: width 0.3s ease;
+  color: #fff;
+}
+
+.nivel.perigo {
+  background: #e53935;
+}
+
+.nivel.medio {
+  background: #fbc02d;
+  color: #000;
+}
+
+.nivel.seguro {
+  background: #43a047;
+}
+
+/* Vulnerabilidades */
+.vulnerabilidade {
+  background: #2e2e2e;
+  border-left: 5px solid #ffb300;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  white-space: normal;
+}
+
+.vul-title {
+  font-weight: bold;
+  color: #ffb300;
+  margin-bottom: 6px;
+}
+
+.vul-explanation {
+  margin-top: 8px;
+  color: #ccc;
+  font-size: 0.95em;
+}
+
+.codigo-html {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+  overflow-x: auto;
+  margin-top: 6px;
+  white-space: pre-wrap;
+  color: #dcdcdc;
+}
+
+/* Cookies */
+.cookie-box {
+  margin-top: 20px;
+  background: #1e1e1e;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #00796b;
+}
+
+.seguro {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.alerta {
+  color: #ff5252;
+  font-weight: 500;
+}
+
+.error {
+  background: #531919;
+  color: #ff6b6b;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+
+.ajuda-tooltip {
+  font-style: normal;
+  cursor: help;
+  font-size: 1em;
+  color: #bbb;
+  margin-left: 6px;
+}
+
+/* New CSS for the download button */
+.botao-download {
+  padding: 12px 20px;
+  background: #0a66c2; /* Matches the analyze button */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 20px; /* Adjust as needed for spacing */
+}
+
+.botao-download:hover {
+  background: #084d99; /* Matches the analyze button on hover */
+}
+
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+  }
+
+  form button {
+    width: 100%;
+  }
+}

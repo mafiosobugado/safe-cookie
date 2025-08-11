@@ -1,0 +1,37 @@
+<div class="results-header">
+    <div class="results-title-section">
+        <h1 class="results-title">Relatório de Segurança</h1>
+        <p class="results-url">
+            <span class="url-label">URL analisada:</span>
+            <a href="<%= analysis.url %>" target="_blank" rel="noopener noreferrer">
+                <%= analysis.url %>
+            </a>
+            <% if (analysis.redirected) { %>
+                <span class="redirect-info">
+                    (redirecionado de <%= analysis.originalUrl %>)
+                </span>
+            <% } %>
+        </p>
+        <p class="results-timestamp">
+            Análise realizada em <%= new Date(analysis.timestamp).toLocaleString('pt-BR') %>
+        </p>
+    </div>
+    
+    <div class="overall-score">
+        <div class="score-circle score-<%= analysis.grade.toLowerCase().replace('+', 'plus') %>">
+            <div class="score-value"><%= analysis.grade %></div>
+            <div class="score-number"><%= analysis.score %>/100</div>
+        </div>
+        <div class="score-status">
+            <% if (analysis.score >= 80) { %>
+                <span class="status-excellent">Excelente</span>
+            <% } else if (analysis.score >= 60) { %>
+                <span class="status-good">Bom</span>
+            <% } else if (analysis.score >= 40) { %>
+                <span class="status-warning">Atenção</span>
+            <% } else { %>
+                <span class="status-critical">Crítico</span>
+            <% } %>
+        </div>
+    </div>
+</div>

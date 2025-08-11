@@ -1,0 +1,82 @@
+<div class="category-card">
+    <div class="category-header">
+        <h2 class="category-title">
+            <span class="category-icon">📄</span>
+            Análise HTML
+        </h2>
+        <div class="category-score">
+            <span class="score-grade grade-<%= analysis.html?.grade?.toLowerCase() || 'f' %>">
+                <%= analysis.html?.grade || 'F' %>
+            </span>
+            <span class="score-number"><%= analysis.html?.score || 0 %>/100</span>
+        </div>
+    </div>
+    
+    <div class="category-content">
+        <% if (analysis.html?.error) { %>
+            <div class="error-message">
+                <span class="error-icon">❌</span>
+                <%= analysis.html.message %>
+            </div>
+        <% } else { %>
+            <div class="html-summary">
+                <% if (analysis.html?.forms && analysis.html.forms.length > 0) { %>
+                    <div class="html-section">
+                        <h4>Formulários (<%= analysis.html.forms.length %>):</h4>
+                        <% analysis.html.forms.forEach(function(form) { %>
+                            <div class="form-item">
+                                <span class="form-method"><%= form.method?.toUpperCase() || 'GET' %></span>
+                                <% if (form.hasPasswordField) { %>
+                                    <span class="form-tag">🔑 Senha</span>
+                                <% } %>
+                                <% if (!form.isSecure && form.hasPasswordField) { %>
+                                    <span class="form-warning">⚠️ HTTP</span>
+                                <% } %>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } %>
+                
+                <% if (analysis.html?.scripts && analysis.html.scripts.length > 0) { %>
+                    <div class="html-section">
+                        <h4>Scripts Externos (<%= analysis.html.scripts.filter(s => s.isExternal).length %>):</h4>
+                        <% analysis.html.scripts.filter(s => s.isExternal).forEach(function(script) { %>
+                            <div class="script-item">
+                                <span class="script-url"><%= script.src %></span>
+                                <% if (!script.isHttps) { %>
+                                    <span class="script-warning">⚠️ HTTP</span>
+                                <% } %>
+                            </div>
+                        <% }); %>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
+        
+        <% if (analysis.html?.vulnerabilities && analysis.html.vulnerabilities.length > 0) { %>
+            <div class="vulnerabilities-list">
+                <h4>Problemas Encontrados:</h4>
+                <% analysis.html.vulnerabilities.forEach(function(vuln) { %>
+                    <div class="vulnerability-item severity-<%= vuln.severity %>">
+                        <div class="vulnerability-message"><%= vuln.message %></div>
+                        <% if (vuln.impact) { %>
+                            <div class="vulnerability-impact"><%= vuln.impact %></div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+        
+        <% if (analysis.html?.recommendations && analysis.html.recommendations.length > 0) { %>
+            <div class="recommendations-list">
+                <h4>Recomendações:</h4>
+                <% analysis.html.recommendations.forEach(function(rec) { %>
+                    <div class="recommendation-item">
+                        <span class="recommendation-icon">💡</span>
+                        <span class="recommendation-text"><%= rec %></span>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>

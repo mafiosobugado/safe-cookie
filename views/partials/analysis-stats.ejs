@@ -1,0 +1,30 @@
+<div class="quick-stats">
+    <div class="stat-item">
+        <div class="stat-icon">🍪</div>
+        <div class="stat-content">
+            <div class="stat-value"><%= analysis.cookies?.count || 0 %></div>
+            <div class="stat-label">Cookies</div>
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-icon">⚠️</div>
+        <div class="stat-content">
+            <div class="stat-value"><%= analysis.vulnerabilities?.length || 0 %></div>
+            <div class="stat-label">Vulnerabilidades</div>
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-icon">🔒</div>
+        <div class="stat-content">
+            <div class="stat-value"><%= analysis.isHttps ? 'HTTPS' : 'HTTP' %></div>
+            <div class="stat-label">Protocolo</div>
+        </div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-icon">📊</div>
+        <div class="stat-content">
+            <div class="stat-value"><%= analysis.httpStatus %></div>
+            <div class="stat-label">Status HTTP</div>
+        </div>
+    </div>
+</div>

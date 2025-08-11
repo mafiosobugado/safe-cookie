@@ -1,0 +1,37 @@
+<section class="analysis-form-section">
+    <div class="container">
+        <div class="analysis-header">
+            <h1 class="page-title">Análise de Segurança Web</h1>
+            <p class="page-description">
+                Digite a URL do website que deseja analisar para obter um relatório completo de segurança
+            </p>
+        </div>
+        
+        <div class="analysis-form-card">
+            <form id="url-analysis-form" class="analysis-form">
+                <div class="form-group">
+                    <label for="url-input" class="form-label">URL do Website</label>
+                    <div class="input-group">
+                        <input 
+                            type="url" 
+                            id="url-input" 
+                            name="url" 
+                            class="form-input" 
+                            placeholder="https://exemplo.com"
+                            required
+                            autocomplete="url"
+                        >
+                        <button type="submit" class="btn-primary" id="analyze-btn">
+                            <span class="btn-text">Analisar</span>
+                            <span class="btn-loading hidden">
+                                <span class="spinner-small"></span>
+                                Analisando...
+                            </span>
+                        </button>
+                    </div>
+                    <div id="url-error" class="form-error hidden"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,77 @@
+<div class="category-card">
+    <div class="category-header">
+        <h2 class="category-title">
+            <span class="category-icon">🛡️</span>
+            Headers de Segurança
+        </h2>
+        <div class="category-score">
+            <span class="score-grade grade-<%= analysis.headers?.grade?.toLowerCase() || 'f' %>">
+                <%= analysis.headers?.grade || 'F' %>
+            </span>
+            <span class="score-number"><%= analysis.headers?.score || 0 %>/100</span>
+        </div>
+    </div>
+    
+    <div class="category-content">
+        <% if (analysis.headers?.error) { %>
+            <div class="error-message">
+                <span class="error-icon">❌</span>
+                <%= analysis.headers.message %>
+            </div>
+        <% } else { %>
+            <% if (analysis.headers?.present && analysis.headers.present.length > 0) { %>
+                <div class="headers-present">
+                    <h4>Headers Presentes:</h4>
+                    <div class="headers-grid">
+                        <% analysis.headers.present.forEach(function(header) { %>
+                            <div class="header-item header-present">
+                                <span class="header-name"><%= header %></span>
+                                <span class="header-status">✅</span>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            <% } %>
+            
+            <% if (analysis.headers?.missing && analysis.headers.missing.length > 0) { %>
+                <div class="headers-missing">
+                    <h4>Headers Ausentes:</h4>
+                    <div class="headers-grid">
+                        <% analysis.headers.missing.forEach(function(header) { %>
+                            <div class="header-item header-missing">
+                                <span class="header-name"><%= header %></span>
+                                <span class="header-status">❌</span>
+                            </div>
+                        <% }); %>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+        
+        <% if (analysis.headers?.vulnerabilities && analysis.headers.vulnerabilities.length > 0) { %>
+            <div class="vulnerabilities-list">
+                <h4>Problemas Encontrados:</h4>
+                <% analysis.headers.vulnerabilities.forEach(function(vuln) { %>
+                    <div class="vulnerability-item severity-<%= vuln.severity %>">
+                        <div class="vulnerability-message"><%= vuln.message %></div>
+                        <% if (vuln.impact) { %>
+                            <div class="vulnerability-impact"><%= vuln.impact %></div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+        
+        <% if (analysis.headers?.recommendations && analysis.headers.recommendations.length > 0) { %>
+            <div class="recommendations-list">
+                <h4>Recomendações:</h4>
+                <% analysis.headers.recommendations.forEach(function(rec) { %>
+                    <div class="recommendation-item">
+                        <span class="recommendation-icon">💡</span>
+                        <span class="recommendation-text"><%= rec %></span>
+                    </div>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>

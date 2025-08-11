@@ -1,0 +1,49 @@
+<section class="analysis-results-section">
+    <div class="container">
+        <!-- Header with overall score -->
+        <%- include('analysis-header', { analysis: analysis }) %>
+        
+        <!-- Quick Stats -->
+        <%- include('analysis-stats', { analysis: analysis }) %>
+        
+        <!-- Analysis Categories -->
+        <div class="analysis-categories">
+            <!-- SSL Analysis -->
+            <%- include('analysis-ssl', { analysis: analysis }) %>
+            
+            <!-- Headers Analysis -->
+            <%- include('analysis-headers', { analysis: analysis }) %>
+            
+            <!-- Cookies Analysis -->
+            <%- include('analysis-cookies', { analysis: analysis }) %>
+            
+            <!-- HTML Analysis -->
+            <%- include('analysis-html', { analysis: analysis }) %>
+        </div>
+        
+        <!-- Overall Recommendations -->
+        <%- include('analysis-recommendations', { analysis: analysis }) %>
+        
+        <!-- Actions -->
+        <div class="analysis-actions">
+            <button class="btn-primary" onclick="window.print()">Imprimir Relatório</button>
+            <button class="btn-secondary" onclick="exportToJSON()">Exportar JSON</button>
+            <a href="/" class="btn-secondary">Nova Análise</a>
+        </div>
+    </div>
+</section>
+
+<script>
+function exportToJSON() {
+    const data = <%- JSON.stringify(analysis) %>;
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `security-analysis-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+</script>

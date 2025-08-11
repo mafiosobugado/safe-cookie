@@ -1,0 +1,129 @@
+<footer class="footer" role="contentinfo">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <div class="brand-icon">🍪</div>
+                    <span class="brand-text">Safe Cookie</span>
+                </div>
+                <p class="footer-description">
+                    Ferramenta avançada de análise de segurança web com foco em cookies, SSL, headers e vulnerabilidades.
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Recursos</h3>
+                <ul class="footer-links">
+                    <li><a href="/">Análise de Segurança</a></li>
+                    <li><a href="/api/info" target="_blank">API Documentation</a></li>
+                    <li><a href="/api/health" target="_blank">Status da API</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Segurança</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPrivacyInfo()">Política de Privacidade</a></li>
+                    <li><a href="#" onclick="showSecurityInfo()">Práticas de Segurança</a></li>
+                    <li><a href="#" onclick="showDataInfo()">Tratamento de Dados</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 class="footer-title">Suporte</h3>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/safe-cookie/safe-cookie/issues" target="_blank">Report Issues</a></li>
+                    <li><a href="https://github.com/safe-cookie/safe-cookie" target="_blank">GitHub</a></li>
+                    <li><a href="#" onclick="showContactInfo()">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-info">
+            
+                <p class="footer-tech">
+                    Built with ❤️ using Node.js, Express & Modern Web Technologies
+                </p>
+            </div>
+            
+            <div class="footer-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="total-analyses">0</span>
+                    <span class="stat-label">Análises Realizadas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="vulnerabilities-found">0</span>
+                    <span class="stat-label">Vulnerabilidades Encontradas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Privacy Modal -->
+<div id="privacy-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Política de Privacidade</h3>
+            <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Safe Cookie</strong> respeita sua privacidade:</p>
+            <ul>
+                <li>Não armazenamos URLs analisadas permanentemente</li>
+                <li>Logs são mantidos apenas para fins de debugging</li>
+                <li>Nenhum dado pessoal é coletado ou compartilhado</li>
+                <li>Análises são realizadas em tempo real</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Security Modal -->
+<div id="security-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Práticas de Segurança</h3>
+            <button class="modal-close" onclick="closeModal('security-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p><strong>Nossa aplicação implementa:</strong></p>
+            <ul>
+                <li>Headers de segurança (CSP, HSTS, X-Frame-Options)</li>
+                <li>Rate limiting para prevenir abuso</li>
+                <li>Validação rigorosa de entrada</li>
+                <li>Logging estruturado para auditoria</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+function showPrivacyInfo() {
+    document.getElementById('privacy-modal').classList.remove('hidden');
+}
+
+function showSecurityInfo() {
+    document.getElementById('security-modal').classList.remove('hidden');
+}
+
+function showDataInfo() {
+    alert('Safe Cookie não armazena dados pessoais. Todas as análises são realizadas em tempo real e os resultados não são persistidos.');
+}
+
+function showContactInfo() {
+    alert('Para suporte, abra uma issue no GitHub: https://github.com/safe-cookie/safe-cookie/issues');
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.add('hidden');
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal')) {
+        e.target.classList.add('hidden');
+    }
+});
+</script>

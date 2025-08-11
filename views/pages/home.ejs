@@ -1,0 +1,15 @@
+<%- include('../layouts/main', {
+    pageTitle: pageTitle,
+    pageDescription: pageDescription,
+    currentPage: currentPage,
+    additionalJS: [
+        '/js/components/report-generator.js',
+        '/js/pages/home.js',
+        '/js/pages/home/url-form.js',
+        '/js/pages/home/stats-counter.js',
+        '/js/pages/home/features-section.js',
+        '/js/pages/home/hero-section.js',
+        '/js/pages/home/demo-section.js'
+    ],
+    body: include('../partials/home-content')
+}) %>

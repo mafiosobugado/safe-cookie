@@ -1,0 +1,359 @@
+/* ==========================================================================
+   🎨 SAFE COOKIE - VARIÁVEIS CSS MODULARES
+   ========================================================================== */
+
+/* ==========================================================================
+   📱 TEMA CLARO (Light Theme)
+   ========================================================================== */
+:root {
+  /* 🎨 Cores Primárias */
+  --primary-color: #0a66c2;
+  --primary-hover: #084d99;
+  --primary-light: #3d8bcd;
+  --secondary-color: #249da3;
+  --accent-color: #00796b;
+  --accent-light: #4db6ac;
+
+  /* 🎨 Cores de Status */
+  --success-color: #43a047;
+  --success-light: #66bb6a;
+  --warning-color: #ffb300;
+  --warning-light: #ffc107;
+  --danger-color: #e53935;
+  --danger-light: #ef5350;
+  --info-color: #1976d2;
+  --info-light: #42a5f5;
+
+  /* 🎨 Cores de Fundo */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-overlay: rgba(255, 255, 255, 0.95);
+  --bg-modal: rgba(0, 0, 0, 0.5);
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+  /* 🎨 Cores de Texto */
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
+  --text-inverse: #ffffff;
+  --text-link: var(--primary-color);
+  --text-link-hover: var(--primary-hover);
+
+  /* 🎨 Cores de Borda */
+  --border-color: #dee2e6;
+  --border-light: #e9ecef;
+  --border-dark: #adb5bd;
+  --border-focus: var(--primary-color);
+
+  /* 🎨 Sombras */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  --shadow-xl: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  --card-shadow: var(--shadow-md);
+  --modal-shadow: var(--shadow-xl);
+
+  /* 🎨 Cores de Componentes */
+  --card-bg: var(--bg-primary);
+  --card-border: var(--border-light);
+  --input-bg: var(--bg-primary);
+  --input-border: var(--border-color);
+  --input-focus: var(--border-focus);
+  --button-shadow: var(--shadow-sm);
+
+  /* 📐 Espaçamentos */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+
+  /* 📐 Raios de Borda */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 50%;
+
+  /* 📐 Tamanhos de Fonte */
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.125rem;
+  --font-xl: 1.25rem;
+  --font-2xl: 1.5rem;
+  --font-3xl: 1.875rem;
+  --font-4xl: 2.25rem;
+
+  /* 📐 Pesos de Fonte */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* 📐 Alturas de Linha */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* 🎭 Transições */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* 📐 Z-Index */
+  --z-dropdown: 1000;
+  --z-modal: 1050;
+  --z-tooltip: 1060;
+  --z-toast: 1070;
+  --z-behind: -1;
+
+  /* 📱 Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+
+  /* 📐 Larguras Máximas */
+  --max-width-sm: 540px;
+  --max-width-md: 720px;
+  --max-width-lg: 960px;
+  --max-width-xl: 1140px;
+  --max-width-xxl: 1320px;
+}
+
+/* ==========================================================================
+   🌙 TEMA ESCURO (Dark Theme)
+   ========================================================================== */
+[data-theme="dark"] {
+  /* 🎨 Cores Primárias */
+  --primary-color: #3d8bcd;
+  --primary-hover: #5a9bd4;
+  --primary-light: #7bb3e0;
+  --secondary-color: #4dd0e1;
+  --accent-color: #26a69a;
+  --accent-light: #4db6ac;
+
+  /* 🎨 Cores de Status */
+  --success-color: #66bb6a;
+  --success-light: #81c784;
+  --warning-color: #ffca28;
+  --warning-light: #ffd54f;
+  --danger-color: #ef5350;
+  --danger-light: #f06292;
+  --info-color: #42a5f5;
+  --info-light: #64b5f6;
+
+  /* 🎨 Cores de Fundo */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #2e2e2e;
+  --bg-overlay: rgba(18, 18, 18, 0.95);
+  --bg-modal: rgba(0, 0, 0, 0.7);
+  --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+
+  /* 🎨 Cores de Texto */
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #757575;
+  --text-inverse: #121212;
+  --text-link: var(--primary-color);
+  --text-link-hover: var(--primary-hover);
+
+  /* 🎨 Cores de Borda */
+  --border-color: #333333;
+  --border-light: #404040;
+  --border-dark: #555555;
+  --border-focus: var(--primary-color);
+
+  /* 🎨 Sombras */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 2rem 4rem rgba(0, 0, 0, 0.6);
+  --card-shadow: var(--shadow-md);
+  --modal-shadow: var(--shadow-xl);
+
+  /* 🎨 Cores de Componentes */
+  --card-bg: var(--bg-secondary);
+  --card-border: var(--border-color);
+  --input-bg: var(--bg-tertiary);
+  --input-border: var(--border-color);
+  --input-focus: var(--border-focus);
+  --button-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   🎨 TEMA DE ALTO CONTRASTE (High Contrast Theme)
+   ========================================================================== */
+[data-theme="high-contrast"] {
+  /* 🎨 Cores Primárias */
+  --primary-color: #0066cc;
+  --primary-hover: #004499;
+  --primary-light: #3388dd;
+  --secondary-color: #ff6600;
+  --accent-color: #00aa00;
+  --accent-light: #33bb33;
+
+  /* 🎨 Cores de Status */
+  --success-color: #00aa00;
+  --success-light: #33bb33;
+  --warning-color: #ff9900;
+  --warning-light: #ffaa33;
+  --danger-color: #cc0000;
+  --danger-light: #dd3333;
+  --info-color: #0066cc;
+  --info-light: #3388dd;
+
+  /* 🎨 Cores de Fundo */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f0f0;
+  --bg-tertiary: #e0e0e0;
+  --bg-overlay: rgba(255, 255, 255, 0.98);
+  --bg-modal: rgba(0, 0, 0, 0.8);
+  --bg-gradient: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+
+  /* 🎨 Cores de Texto */
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --text-inverse: #ffffff;
+  --text-link: var(--primary-color);
+  --text-link-hover: var(--primary-hover);
+
+  /* 🎨 Cores de Borda */
+  --border-color: #000000;
+  --border-light: #333333;
+  --border-dark: #666666;
+  --border-focus: var(--primary-color);
+
+  /* 🎨 Sombras */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 0.5rem 1rem rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 2rem 4rem rgba(0, 0, 0, 0.8);
+  --card-shadow: var(--shadow-md);
+  --modal-shadow: var(--shadow-xl);
+
+  /* 🎨 Cores de Componentes */
+  --card-bg: var(--bg-primary);
+  --card-border: var(--border-color);
+  --input-bg: var(--bg-primary);
+  --input-border: var(--border-color);
+  --input-focus: var(--border-focus);
+  --button-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   🎨 VARIÁVEIS ESPECÍFICAS DE COMPONENTES
+   ========================================================================== */
+
+/* 🔘 Botões */
+:root {
+  --btn-height-sm: 2rem;
+  --btn-height-md: 2.5rem;
+  --btn-height-lg: 3rem;
+  --btn-padding-sm: 0.5rem 1rem;
+  --btn-padding-md: 0.75rem 1.5rem;
+  --btn-padding-lg: 1rem 2rem;
+}
+
+/* 📝 Formulários */
+:root {
+  --input-height-sm: 2rem;
+  --input-height-md: 2.5rem;
+  --input-height-lg: 3rem;
+  --input-padding-sm: 0.5rem;
+  --input-padding-md: 0.75rem;
+  --input-padding-lg: 1rem;
+}
+
+/* 🃏 Cards */
+:root {
+  --card-padding-sm: 1rem;
+  --card-padding-md: 1.5rem;
+  --card-padding-lg: 2rem;
+}
+
+/* 📊 Barras de Progresso */
+:root {
+  --progress-height-sm: 0.5rem;
+  --progress-height-md: 1rem;
+  --progress-height-lg: 1.5rem;
+}
+
+/* 🍞 Toasts */
+:root {
+  --toast-width: 320px;
+  --toast-padding: 1rem;
+  --toast-margin: 1rem;
+}
+
+/* 🎯 Modais */
+:root {
+  --modal-width-sm: 300px;
+  --modal-width-md: 500px;
+  --modal-width-lg: 800px;
+  --modal-width-xl: 1140px;
+}
+
+/* 📱 Responsividade */
+:root {
+  --container-padding-mobile: 1rem;
+  --container-padding-tablet: 2rem;
+  --container-padding-desktop: 3rem;
+}
+
+/* ==========================================================================
+   🎨 UTILITÁRIOS DE TEMA
+   ========================================================================== */
+
+/* Transição suave entre temas */
+* {
+  transition: 
+    background-color var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+/* Desabilita transições durante mudança de tema */
+.theme-transitioning * {
+  transition: none !important;
+}
+
+/* ==========================================================================
+   🎨 CSS CUSTOM PROPERTIES HELPERS
+   ========================================================================== */
+
+/* Facilita o uso de cores com opacidade */
+:root {
+  --primary-rgb: 10, 102, 194;
+  --secondary-rgb: 36, 157, 163;
+  --success-rgb: 67, 160, 71;
+  --warning-rgb: 255, 179, 0;
+  --danger-rgb: 229, 57, 53;
+  --info-rgb: 25, 118, 210;
+}
+
+[data-theme="dark"] {
+  --primary-rgb: 61, 139, 205;
+  --secondary-rgb: 77, 208, 225;
+  --success-rgb: 102, 187, 106;
+  --warning-rgb: 255, 202, 40;
+  --danger-rgb: 239, 83, 80;
+  --info-rgb: 66, 165, 245;
+}
+
+[data-theme="high-contrast"] {
+  --primary-rgb: 0, 102, 204;
+  --secondary-rgb: 255, 102, 0;
+  --success-rgb: 0, 170, 0;
+  --warning-rgb: 255, 153, 0;
+  --danger-rgb: 204, 0, 0;
+  --info-rgb: 0, 102, 204;
+}

@@ -1,0 +1,218 @@
+/* ==========================================================================
+   ⏳ SAFE COOKIE - COMPONENTES: LOADING & SPINNERS
+   ========================================================================== */
+
+/* Loading Overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-modal);
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.loading-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Spinner Base */
+.spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid rgba(var(--primary-rgb), 0.3);
+  border-radius: var(--radius-full);
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Spinner Tamanhos */
+.spinner-sm { width: 1rem; height: 1rem; border-width: 2px; }
+.spinner-lg { width: 3rem; height: 3rem; border-width: 4px; }
+.spinner-xl { width: 4rem; height: 4rem; border-width: 5px; }
+
+/* Spinner Cores */
+.spinner-secondary { 
+  border-color: rgba(var(--secondary-rgb), 0.3);
+  border-top-color: var(--secondary-color);
+}
+.spinner-success { 
+  border-color: rgba(var(--success-rgb), 0.3);
+  border-top-color: var(--success-color);
+}
+.spinner-danger { 
+  border-color: rgba(var(--danger-rgb), 0.3);
+  border-top-color: var(--danger-color);
+}
+
+/* Pulse Spinner */
+.spinner-pulse {
+  border: none;
+  background-color: var(--primary-color);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* Dots Spinner */
+.spinner-dots {
+  display: inline-flex;
+  gap: 0.25rem;
+  width: auto;
+  height: auto;
+  border: none;
+}
+
+.spinner-dots::before,
+.spinner-dots::after,
+.spinner-dots {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-color);
+  animation: dots 1.4s ease-in-out infinite both;
+}
+
+.spinner-dots::before {
+  content: '';
+  animation-delay: -0.32s;
+}
+
+.spinner-dots::after {
+  content: '';
+  animation-delay: -0.16s;
+}
+
+@keyframes dots {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+/* Loading States */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--bg-primary), 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Progress Bar */
+.progress {
+  display: flex;
+  height: var(--progress-height-md);
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+}
+
+.progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--text-inverse);
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--primary-color);
+  transition: width var(--transition-normal);
+}
+
+/* Progress Striped */
+.progress-striped .progress-bar {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.progress-animated .progress-bar {
+  animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+  0% { background-position-x: 1rem; }
+}
+
+/* Progress Cores */
+.progress-success .progress-bar { background-color: var(--success-color); }
+.progress-warning .progress-bar { background-color: var(--warning-color); }
+.progress-danger .progress-bar { background-color: var(--danger-color); }
+.progress-info .progress-bar { background-color: var(--info-color); }
+
+/* Progress Tamanhos */
+.progress-sm { height: var(--progress-height-sm); }
+.progress-lg { height: var(--progress-height-lg); }
+
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-tertiary) 25%,
+    var(--bg-secondary) 50%,
+    var(--bg-tertiary) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+}
+
+.skeleton-circle {
+  border-radius: var(--radius-full);
+}
+
+/* Loading Text */
+.loading-text::after {
+  content: '';
+  animation: loading-text 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-text {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+}

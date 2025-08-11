@@ -1,0 +1,428 @@
+/**
+ * Layouts - Safe Cookie
+ * Componentes de layout e grid system
+ */
+
+/* === CONTAINER === */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.container--sm {
+  max-width: 640px;
+}
+
+.container--md {
+  max-width: 768px;
+}
+
+.container--lg {
+  max-width: 1024px;
+}
+
+.container--xl {
+  max-width: 1280px;
+}
+
+.container--fluid {
+  max-width: none;
+}
+
+/* === GRID SYSTEM === */
+.grid {
+  display: grid;
+  gap: var(--spacing-6);
+  grid-template-columns: 1fr;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.grid--12 {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* === GRID GAP === */
+.grid--gap-2 { gap: var(--spacing-2); }
+.grid--gap-3 { gap: var(--spacing-3); }
+.grid--gap-4 { gap: var(--spacing-4); }
+.grid--gap-6 { gap: var(--spacing-6); }
+.grid--gap-8 { gap: var(--spacing-8); }
+
+/* === GRID RESPONSIVO === */
+@media (max-width: 1024px) {
+  .grid--lg-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--lg-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--lg-1 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .grid--md-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid--md-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--md-1 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .grid--sm-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid--sm-1 { grid-template-columns: 1fr; }
+  
+  .grid--2,
+  .grid--3,
+  .grid--4,
+  .grid--5,
+  .grid--6 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === FLEXBOX === */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+/* === FLEX ALIGNMENT === */
+.items-start { align-items: flex-start; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
+
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-evenly { justify-content: space-evenly; }
+
+.content-start { align-content: flex-start; }
+.content-center { align-content: center; }
+.content-end { align-content: flex-end; }
+.content-between { align-content: space-between; }
+.content-around { align-content: space-around; }
+
+/* === FLEX GROW/SHRINK === */
+.flex-1 { flex: 1 1 0%; }
+.flex-auto { flex: 1 1 auto; }
+.flex-initial { flex: 0 1 auto; }
+.flex-none { flex: none; }
+
+.grow { flex-grow: 1; }
+.grow-0 { flex-grow: 0; }
+
+.shrink { flex-shrink: 1; }
+.shrink-0 { flex-shrink: 0; }
+
+/* === GAPS === */
+.gap-1 { gap: var(--spacing-1); }
+.gap-2 { gap: var(--spacing-2); }
+.gap-3 { gap: var(--spacing-3); }
+.gap-4 { gap: var(--spacing-4); }
+.gap-5 { gap: var(--spacing-5); }
+.gap-6 { gap: var(--spacing-6); }
+.gap-8 { gap: var(--spacing-8); }
+
+/* === SECTIONS === */
+.section {
+  padding: var(--spacing-16) 0;
+}
+
+.section--sm {
+  padding: var(--spacing-12) 0;
+}
+
+.section--lg {
+  padding: var(--spacing-24) 0;
+}
+
+.section--hero {
+  padding: var(--spacing-20) 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+/* === HEADER/FOOTER === */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-200);
+  height: var(--header-height);
+}
+
+.header-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer {
+  background-color: var(--color-gray-900);
+  color: var(--color-gray-300);
+  padding: var(--spacing-12) 0 var(--spacing-6);
+}
+
+/* === MAIN LAYOUT === */
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: var(--spacing-8);
+  padding-bottom: var(--spacing-8);
+}
+
+/* === SIDEBAR LAYOUT === */
+.sidebar-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: var(--spacing-8);
+  min-height: calc(100vh - var(--header-height));
+}
+
+.sidebar {
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-6);
+  border-right: 1px solid var(--color-gray-200);
+}
+
+.content-area {
+  padding: var(--spacing-6);
+}
+
+@media (max-width: 1024px) {
+  .sidebar-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    order: 2;
+    border-right: none;
+    border-top: 1px solid var(--color-gray-200);
+  }
+}
+
+/* === HERO SECTION === */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--spacing-20) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-tight);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === FEATURES GRID === */
+.features-section {
+  padding: var(--spacing-20) 0;
+  background-color: var(--color-gray-50);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-12);
+}
+
+/* === STATS SECTION === */
+.stats-section {
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  padding: var(--spacing-16) 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-8);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+/* === CTA SECTION === */
+.cta-section {
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-primary-100) 100%);
+  padding: var(--spacing-20) 0;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-4);
+  color: var(--color-gray-900);
+}
+
+.cta-description {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-600);
+  margin-bottom: var(--spacing-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === ANALYSIS LAYOUT === */
+.analysis-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
+}
+
+.analysis-main {
+  min-width: 0;
+}
+
+.analysis-sidebar {
+  background-color: var(--color-gray-50);
+  padding: var(--spacing-6);
+  border-radius: var(--border-radius-lg);
+  height: fit-content;
+  position: sticky;
+  top: calc(var(--header-height) + var(--spacing-6));
+}
+
+@media (max-width: 1024px) {
+  .analysis-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .analysis-sidebar {
+    order: -1;
+    position: static;
+  }
+}
+
+/* === UTILITÁRIOS DE LAYOUT === */
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+.hidden { display: none !important; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+.inset-0 { 
+  top: 0; 
+  right: 0; 
+  bottom: 0; 
+  left: 0; 
+}
+
+.top-0 { top: 0; }
+.right-0 { right: 0; }
+.bottom-0 { bottom: 0; }
+.left-0 { left: 0; }
+
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+.z-40 { z-index: 40; }
+.z-50 { z-index: 50; }
+
+/* === RESPONSIVIDADE GLOBAL === */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-6);
+  }
+  
+  .section {
+    padding: var(--spacing-12) 0;
+  }
+  
+  .section--hero {
+    padding: var(--spacing-16) 0;
+    min-height: 50vh;
+  }
+}
